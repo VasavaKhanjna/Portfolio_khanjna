@@ -101,13 +101,15 @@ function Experience() {
                   </button>
 
                   <div className="accordion-body">
-                    <div>
-                      <p className="accordion-meta">{role.company} · {role.period}</p>
-                      <ul className="full-experience-bullets">
-                        {role.bullets.map((bullet) => (
-                          <li key={bullet}>{bullet}</li>
-                        ))}
-                      </ul>
+                    <div className="accordion-clip">
+                      <div className="accordion-inner">
+                        <p className="accordion-meta">{role.company} · {role.period}</p>
+                        <ul className="full-experience-bullets">
+                          {role.bullets.map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </li>
