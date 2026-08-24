@@ -72,9 +72,9 @@ function Experience() {
       <div id="layout">
         <Sidebar />
         <main id="experience-page">
-          <div className="experience-page-head">
+          <div className="page-head">
             <h1>Experience</h1>
-            <span className="experience-count">/{experience.length}</span>
+            <span className="page-count">/{experience.length}</span>
           </div>
 
           <ul className="accordion-list">

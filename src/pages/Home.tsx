@@ -1,29 +1,8 @@
+import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Sidebar from '../components/Sidebar'
-
-const projects = [
-  {
-    label: 'Greta',
-    tone: 'sand',
-    metric: '~5K users',
-    description:
-      'Designed an AI product end-to-end across web, mobile, and growth, from zero to launch — now ~5,000 paid customers and ~$250K revenue. Led the full redesign of app.greta.sh and built the design system from scratch.',
-  },
-  {
-    label: 'PLGOS',
-    tone: 'ink',
-    metric: 'PLG platform',
-    description:
-      'Designed a product-led growth platform end-to-end: onboarding, in-app guidance, gamification (quizzes, streaks, leaderboards), feedback loops, and pricing — in light and dark themes.',
-  },
-  {
-    label: 'Flows',
-    tone: 'clay',
-    metric: 'No-code builder',
-    description:
-      'Shipped a no-code workflow automation builder for non-technical users, including the project theme system and full auth UX with OTP and Google OAuth.',
-  },
-]
+import Book from '../components/Book'
+import { projects } from '../data/projects'
 
 const connectLinks = [
   { label: 'Email', href: 'mailto:vasavakhanjna22@gmail.com' },
@@ -55,16 +34,14 @@ function Home() {
 
           <section id="work" className="work-grid">
             {projects.map((project) => (
-              <div className="work-card" key={project.label}>
-                <div className="book-wrap">
-                  <div className="book-page" />
-                  <div className={`book tone-${project.tone}`}>
-                    <span className="book-badge">{project.metric}</span>
-                    <span className="book-title">{project.label}</span>
-                  </div>
-                </div>
+              <Link
+                className="work-card"
+                to={project.caseStudy ? `/work/${project.slug}` : `/work#${project.slug}`}
+                key={project.slug}
+              >
+                <Book project={project} />
                 <p className="work-desc">{project.description}</p>
-              </div>
+              </Link>
             ))}
           </section>
 

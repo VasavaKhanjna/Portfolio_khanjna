@@ -9,7 +9,7 @@ function Nav() {
       </div>
 
       <ul className="top-nav-links">
-        <li><a href="/#work">Work</a></li>
+        <li><Link to="/work">Work</Link></li>
         <li><Link to="/experience">Experience</Link></li>
         <li><a href="/experience#skills">Skills</a></li>
         <li><Link to="/about">About</Link></li>
