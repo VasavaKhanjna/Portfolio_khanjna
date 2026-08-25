@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Nav from '../components/Nav'
-import Sidebar from '../components/Sidebar'
 import Book from '../components/Book'
 import { projects } from '../data/projects'
 
@@ -30,7 +29,6 @@ function Work() {
     <>
       <Nav />
       <div id="layout">
-        <Sidebar />
         <main id="work-page">
           <div className="page-head">
             <h1>Work</h1>

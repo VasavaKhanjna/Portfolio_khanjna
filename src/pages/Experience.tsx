@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Nav from '../components/Nav'
-import Sidebar from '../components/Sidebar'
+import Skills from '../components/Skills'
 
 const experience = [
   {
@@ -57,12 +57,6 @@ const experience = [
   },
 ]
 
-const skillGroups = [
-  { title: 'Core Design', items: ['0→1 Product Design', 'UI/UX', 'Design Systems', 'Interaction Design', 'Prototyping'] },
-  { title: 'Research', items: ['Usability Testing', 'Continuous Discovery', 'Feedback Synthesis', 'Competitive Analysis'] },
-  { title: 'Tools', items: ['Figma', 'FigJam', 'Claude Code', 'Illustrator', 'Photoshop'] },
-]
-
 function Experience() {
   const [openRole, setOpenRole] = useState(experience[0].role + experience[0].period)
 
@@ -70,7 +64,6 @@ function Experience() {
     <>
       <Nav />
       <div id="layout">
-        <Sidebar />
         <main id="experience-page">
           <div className="page-head">
             <h1>Experience</h1>
@@ -117,21 +110,7 @@ function Experience() {
             })}
           </ul>
 
-          <section id="skills">
-            <h2>Skills</h2>
-            <div className="skills-grid">
-              {skillGroups.map((group) => (
-                <div className="skill-group" key={group.title}>
-                  <h3>{group.title}</h3>
-                  <div className="tag-row">
-                    {group.items.map((item) => (
-                      <span className="tag-pill outline" key={item}>{item}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          <Skills />
 
           <footer id="footer">
             <span>© 2026 Khanjna Vasava</span>

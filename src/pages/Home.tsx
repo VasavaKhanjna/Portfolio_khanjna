@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
-import Sidebar from '../components/Sidebar'
+import Hero from '../components/Hero'
 import Book from '../components/Book'
 import { projects } from '../data/projects'
 
@@ -16,21 +16,8 @@ function Home() {
       <Nav />
 
       <div id="layout">
-        <Sidebar />
-
         <main id="content">
-          <section className="hero-copy">
-            <span className="badge">Product Designer · UI/UX</span>
-            <h1>
-              Product design for
-              <br />
-              AI-powered SaaS platforms
-            </h1>
-            <p className="lede">
-              Combining design systems and interaction craft with usability
-              testing, continuous user feedback, and AI-assisted development.
-            </p>
-          </section>
+          <Hero />
 
           <section id="work" className="work-grid">
             {projects.map((project) => (

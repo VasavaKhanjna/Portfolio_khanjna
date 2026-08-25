@@ -1,18 +1,21 @@
 :root {
-  --paper: #f1eee4;
-  --canvas: #fbfaf7;
-  --dot: rgba(22, 21, 15, 0.035);
-  --ink: #16150f;
-  --ink-soft: #6b6759;
-  --line: rgba(22, 21, 15, 0.12);
-  --badge-blue: #3b7bf6;
-  --tone-sand: #d9cdb2;
-  --tone-ink: #2a2a28;
-  --tone-clay: #b6543f;
+  /* Dreamy orange — warm cream grounds, soft coral blooms, espresso ink. */
+  --paper: #ffe7d2;
+  --canvas: #fff7f0;
+  --dot: rgba(176, 88, 28, 0.05);
+  --graph: rgba(176, 88, 28, 0.075);
+  --ink: #2e1608;
+  --ink-soft: #8b6753;
+  --line: rgba(120, 60, 20, 0.14);
+  --accent: #e8661b;
+  --accent-soft: #ffd2ad;
+  --frost: rgba(255, 253, 250, 0.62);
+  --tone-sand: #f0d3ac;
+  --tone-ink: #2e1c12;
+  --tone-clay: #cf6339;
 
-  /* Layout scale — every page hangs off these three values. */
+  /* Layout scale — every page hangs off these two values. */
   --nav-h: 88px;
-  --rail: 340px;
   --gutter: 40px;
 }
 
@@ -27,6 +30,35 @@
   width: 100%;
 }
 
+/* Four slow-drifting washes of colour behind the whole site. Fixed, so the
+   page scrolls over the light rather than dragging it along. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 32% at 14% 12%, rgba(255, 158, 84, 0.5), transparent 68%),
+    radial-gradient(34% 30% at 86% 18%, rgba(255, 116, 92, 0.38), transparent 68%),
+    radial-gradient(40% 34% at 74% 84%, rgba(255, 194, 132, 0.5), transparent 68%),
+    radial-gradient(32% 28% at 22% 74%, rgba(246, 140, 108, 0.3), transparent 68%);
+  filter: blur(28px);
+  animation: bloom-drift 34s ease-in-out infinite alternate;
+}
+
+@keyframes bloom-drift {
+  to {
+    transform: translate3d(2.5%, -2%, 0) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
+
 /* ---------- top nav ---------- */
 
 #topnav {
@@ -36,7 +68,8 @@
   gap: 24px;
   min-height: var(--nav-h);
   padding-inline: var(--gutter);
-  background: var(--paper);
+  background: rgba(255, 231, 210, 0.72);
+  backdrop-filter: blur(14px) saturate(1.3);
   border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
@@ -136,45 +169,15 @@
 
 #layout {
   display: grid;
-  grid-template-columns: var(--rail) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: stretch;
-  background: var(--canvas);
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
   min-height: calc(100svh - var(--nav-h));
 
   @media (max-width: 1024px) {
-    grid-template-columns: minmax(0, 1fr);
     min-height: 0;
-  }
-}
-
-#sidebar {
-  align-self: stretch;
-  background: var(--canvas);
-  border-right: 1px solid var(--line);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-  }
-}
-
-.sidebar-inner {
-  position: sticky;
-  top: var(--nav-h);
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding: 36px var(--gutter);
-
-  .intro-copy {
-    font-size: 15px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-  }
-
-  @media (max-width: 1024px) {
-    position: static;
-    padding-block: 28px;
   }
 }
 
@@ -186,7 +189,6 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  background-color: var(--canvas);
   background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
 }
@@ -236,46 +238,14 @@
 
 /* ---------- home ---------- */
 
-.hero-copy {
-  text-align: center;
-  padding: 96px var(--gutter) 80px;
-
-  .badge {
-    display: inline-block;
-    background: rgba(22, 21, 15, 0.06);
-    color: var(--ink-soft);
-    font-size: 13px;
-    padding: 6px 16px;
-    border-radius: 999px;
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    font-size: clamp(34px, 4.4vw, 56px);
-    line-height: 1.1;
-    letter-spacing: -1px;
-    margin: 0 0 24px;
-    color: var(--ink);
-  }
-
-  .lede {
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 460px;
-    margin: 0 auto;
-  }
-
-  @media (max-width: 1024px) {
-    padding: 56px var(--gutter) 48px;
-  }
-}
-
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 270px));
-  justify-content: space-between;
-  gap: 48px 32px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-items: center;
+  gap: 48px 40px;
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
   padding: 0 var(--gutter) 100px;
 
   @media (max-width: 1024px) {
@@ -361,7 +331,7 @@
     height: 32px;
     padding: 0 14px;
     border-radius: 999px;
-    background: var(--badge-blue);
+    background: var(--accent);
     color: #fff;
     font-size: 13px;
     font-weight: 600;
@@ -675,36 +645,6 @@
   }
 }
 
-#skills {
-  padding: 56px var(--gutter) 80px;
-  margin-top: 32px;
-  border-top: 1px solid var(--line);
-
-  h2 {
-    font-size: 28px;
-    margin-bottom: 24px;
-  }
-
-  @media (max-width: 1024px) {
-    padding-block: 40px 56px;
-  }
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.skill-group h3 {
-  font-size: 15px;
-  margin-bottom: 12px;
-}
-
 /* ---------- work ---------- */
 
 #work-page {
@@ -946,7 +886,7 @@
     max-width: 56ch;
 
     .mark {
-      color: var(--badge-blue);
+      color: var(--accent);
       text-decoration: none;
     }
   }
@@ -1122,7 +1062,7 @@
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--badge-blue);
+  color: var(--accent);
 }
 
 .cs-lede {
@@ -1145,7 +1085,7 @@
   }
 
   a {
-    color: var(--badge-blue);
+    color: var(--accent);
     text-decoration: none;
     border-bottom: 1px solid rgba(59, 123, 246, 0.35);
   }
@@ -1446,7 +1386,7 @@
 }
 
 .mock-contextual .mock-prompt b {
-  background: var(--badge-blue);
+  background: var(--accent);
 }
 
 /* --- journey flows --- */
@@ -1539,7 +1479,7 @@
   background: rgba(59, 123, 246, 0.03);
 
   .flow-terminal {
-    color: var(--badge-blue) !important;
+    color: var(--accent) !important;
 
     &::after {
       content: ' ↺';
@@ -1585,7 +1525,7 @@
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.12em;
-  color: var(--badge-blue);
+  color: var(--accent);
 }
 
 .cs-card-vis {
@@ -1698,7 +1638,7 @@
     font-family: var(--mono);
     font-size: 11.5px;
     line-height: 1.5;
-    color: var(--badge-blue);
+    color: var(--accent);
   }
 
   @media (max-width: 1024px) {
@@ -1774,7 +1714,7 @@
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.14em;
-  color: var(--badge-blue);
+  color: var(--accent);
 }
 
 .cs-solution-vis {
@@ -1814,7 +1754,7 @@
 
   &.good::before {
     content: '✓';
-    color: var(--badge-blue);
+    color: var(--accent);
   }
 }
 
@@ -1838,7 +1778,7 @@
 
   li {
     padding: 14px 0 14px 16px;
-    border-left: 2px solid var(--badge-blue);
+    border-left: 2px solid var(--accent);
     font-size: 14px;
     line-height: 1.5;
     color: var(--ink-soft);
@@ -2011,7 +1951,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: var(--badge-blue);
+    background: var(--accent);
     opacity: 0.3;
 
     &:nth-child(2) {
@@ -2159,5 +2099,367 @@
   &:hover .ledger-name {
     text-decoration: underline;
     text-underline-offset: 4px;
+  }
+}
+
+/* ---------- hero ---------- */
+
+/* Graph paper only behind the hero — the rest of the page keeps the dots. */
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 640px) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 96px var(--gutter) 88px;
+}
+
+/* A mask on .hero itself would fade the copy too, so the grid gets its own
+   layer and everything else sits above it. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--graph) 1px, transparent 1px),
+    linear-gradient(90deg, var(--graph) 1px, transparent 1px);
+  background-size: 36px 36px;
+  -webkit-mask-image: radial-gradient(115% 85% at 50% 45%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(115% 85% at 50% 45%, #000 40%, transparent 100%);
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-copy {
+  justify-self: center;
+  max-width: 640px;
+
+  h1 {
+    font-size: clamp(40px, 5.6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -2.4px;
+    margin: 0 0 28px;
+  }
+}
+
+.hero-hello {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 26px;
+}
+
+.hero-do {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: clamp(15px, 1.5vw, 20px);
+  color: var(--accent);
+  margin-bottom: 30px;
+
+  strong {
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+}
+
+/* A rule that ends in an arrowhead, drawn with a border triangle. */
+.hero-do-rule {
+  flex: 0 1 120px;
+  height: 1.5px;
+  background: currentColor;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    translate: 0 -50%;
+    border: 4px solid transparent;
+    border-left-color: currentColor;
+  }
+}
+
+.hero-note {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+
+  b {
+    font-weight: 700;
+    color: var(--ink);
+  }
+}
+
+.hero-note-in {
+  display: block;
+  padding-left: 5ch;
+}
+
+/* ---------- pinned scatter ---------- */
+
+.hero-pins {
+  position: relative;
+  align-self: stretch;
+  min-height: 420px;
+
+  > * {
+    position: absolute;
+    rotate: var(--r, 0deg);
+  }
+}
+
+.hero-pins-left {
+  justify-self: start;
+  width: 100%;
+}
+
+.hero-pins-right {
+  justify-self: end;
+  width: 100%;
+}
+
+.polaroid {
+  margin: 0;
+  padding: 8px 8px 30px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow:
+    0 1px 2px rgba(22, 21, 15, 0.16),
+    0 12px 26px rgba(22, 21, 15, 0.13);
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: grayscale(1) sepia(0.42) saturate(1.5) hue-rotate(-12deg) contrast(1.03);
+  }
+}
+
+.sticky-note {
+  width: 45%;
+  min-width: 150px;
+  padding: 14px 16px;
+  background: #ffcf9f;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.45;
+  box-shadow: 0 10px 22px rgba(22, 21, 15, 0.14);
+
+  b {
+    font-style: italic;
+  }
+}
+
+.sticker {
+  font-size: clamp(26px, 2.4vw, 38px);
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(22, 21, 15, 0.22));
+}
+
+/* Below the two-column breakpoint the scatter has nowhere to live. */
+@media (max-width: 1200px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 64px 56px;
+  }
+
+  .hero-pins {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-note-in {
+    padding-left: 2ch;
+  }
+}
+
+/* ---------- skills ---------- */
+
+.skills-section {
+  padding: 72px 0 96px;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.skills-title {
+  font-size: clamp(34px, 4vw, 56px);
+  letter-spacing: -1.8px;
+  padding-inline: var(--gutter);
+  margin-bottom: 44px;
+}
+
+.skills-card {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: start;
+  gap: 36px;
+  padding: 32px var(--gutter);
+  background: var(--frost);
+  backdrop-filter: blur(10px);
+  border-block: 1px solid var(--line);
+
+  @media (max-width: 860px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+.skills-polaroid {
+  width: 200px;
+  rotate: -2deg;
+
+  img {
+    aspect-ratio: 1;
+  }
+}
+
+.skills-blurb {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 74ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+
+  u {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  b,
+  u {
+    color: var(--ink);
+  }
+}
+
+/* ---------- marquee ---------- */
+
+.skills-marquees {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 16px;
+}
+
+.marquee {
+  overflow: hidden;
+  /* Fade the cut edges so pills don't appear to be sliced off. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-drift 42s linear infinite;
+}
+
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+.marquee-set {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0 6px;
+  list-style: none;
+}
+
+@keyframes marquee-drift {
+  to {
+    translate: -50% 0;
+  }
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  padding: 11px 20px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 15px;
+}
+
+.skill-pill-icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  opacity: 0.85;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* ---------- tools ---------- */
+
+.tool-strip {
+  margin-top: 16px;
+  padding: 34px var(--gutter);
+  border-block: 1px solid var(--line);
+  background-color: var(--frost);
+  backdrop-filter: blur(10px);
+  background-image:
+    linear-gradient(var(--graph) 1px, transparent 1px),
+    linear-gradient(90deg, var(--graph) 1px, transparent 1px);
+  background-size: 26px 26px;
+  overflow-x: auto;
+}
+
+.tool-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 28px;
+  min-width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.tool-logo {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.tool-logo-tall {
+  width: 15px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+    translate: none;
   }
 }

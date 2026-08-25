@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
-import Sidebar from '../components/Sidebar'
 import Carousel from '../components/Carousel'
 import profilePhoto from '../assets/profile-photo.png'
 import sih01 from '../assets/achievements/sih_01.jpeg'
@@ -98,7 +97,6 @@ function About() {
     <>
       <Nav />
       <div id="layout">
-        <Sidebar />
         <main id="about-page">
           {blocks.map((block, index) => (
             <section className={`about-row ${index % 2 === 1 ? 'reverse' : ''}`} key={block.title}>
