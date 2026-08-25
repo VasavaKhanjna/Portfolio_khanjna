@@ -1,4 +1,5 @@
 import gretaPoster from '../assets/projects/greta-poster.svg'
+import mediqPoster from '../assets/projects/mediq-poster.svg'
 
 export type Tone = 'sand' | 'ink' | 'clay'
 
@@ -50,6 +51,7 @@ export const projects: Project[] = [
     slug: 'flows',
     label: 'Flows',
     tone: 'clay',
+    cover: mediqPoster,
     metric: 'No-code builder',
     type: 'Workflow builder',
     surface: 'Web',
