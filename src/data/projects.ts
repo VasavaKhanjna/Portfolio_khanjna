@@ -1,5 +1,6 @@
 import gretaPoster from '../assets/projects/greta-poster.svg'
 import mediqPoster from '../assets/projects/mediq-poster.svg'
+import plgosPoster from '../assets/projects/plgos-poster.svg'
 
 export type Tone = 'sand' | 'ink' | 'clay'
 
@@ -39,6 +40,7 @@ export const projects: Project[] = [
     slug: 'plgos',
     label: 'PLGOS',
     tone: 'ink',
+    cover: plgosPoster,
     metric: 'PLG platform',
     type: 'PLG platform',
     surface: 'Web',

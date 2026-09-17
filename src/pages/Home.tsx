@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import Nav from '../components/Nav'
+import Dock from '../components/Dock'
 import Hero from '../components/Hero'
 import Book from '../components/Book'
 import { projects } from '../data/projects'
@@ -13,7 +13,7 @@ const connectLinks = [
 function Home() {
   return (
     <>
-      <Nav />
+      <Dock />
 
       <div id="layout">
         <main id="content">
@@ -27,7 +27,18 @@ function Home() {
                 key={project.slug}
               >
                 <Book project={project} />
-                <p className="work-desc">{project.description}</p>
+
+                <div className="work-caption">
+                  <h3 className="work-name">{project.label}</h3>
+                  <p className="work-meta">
+                    <span>{project.type}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{project.surface}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{project.year}</span>
+                  </p>
+                  <p className="work-desc">{project.description}</p>
+                </div>
               </Link>
             ))}
           </section>

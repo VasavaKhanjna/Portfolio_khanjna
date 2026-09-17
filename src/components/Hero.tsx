@@ -1,37 +1,37 @@
-import type { CSSProperties } from 'react'
-import quest01 from '../assets/before-this/quest_01.jpeg'
-import hobby01 from '../assets/outside-work/hobby_01.jpeg'
-import hobby02 from '../assets/outside-work/hobby_02.jpeg'
-import sih01 from '../assets/achievements/sih_01.jpeg'
+import type { CSSProperties, ReactNode } from 'react'
+import heroPortrait from '../assets/hero-khanjna.svg'
+import {
+  AdobeLogo,
+  ClaudeLogo,
+  FigmaLogo,
+  FramerLogo,
+  LovableLogo,
+  NotionLogo,
+} from './icons'
 
-/* Each pinned item carries its own tilt and offset so the two clusters
-   read as a scatter rather than a grid. */
-type Pin = CSSProperties & { '--r': string }
-const pin = (rotate: string, top: string, left: string, width?: string): Pin => ({
-  '--r': rotate,
+/* Each chip is parked on the photo's edge by angle, then given its own drift
+   delay so the ring never bobs in unison. */
+type Orbit = CSSProperties & { '--r': string; '--delay': string }
+const orbit = (top: string, left: string, rotate: string, delay: string): Orbit => ({
   top,
   left,
-  width,
+  '--r': rotate,
+  '--delay': delay,
 })
+
+const tools: { name: string; logo: ReactNode; style: Orbit }[] = [
+  { name: 'Figma', logo: <FigmaLogo className="tool-logo tool-logo-tall" />, style: orbit('4%', '-7%', '-9deg', '0s') },
+  { name: 'Framer', logo: <FramerLogo className="tool-logo" />, style: orbit('26%', '-14%', '7deg', '-1.6s') },
+  { name: 'Claude', logo: <ClaudeLogo className="tool-logo" />, style: orbit('58%', '-12%', '-6deg', '-3.2s') },
+  { name: 'Illustrator', logo: <AdobeLogo className="tool-logo" letters="Ai" bg="#330000" fg="#FF9A00" />, style: orbit('86%', '2%', '8deg', '-4.4s') },
+  { name: 'Photoshop', logo: <AdobeLogo className="tool-logo" letters="Ps" bg="#001E36" fg="#31A8FF" />, style: orbit('84%', '62%', '-7deg', '-2.4s') },
+  { name: 'Notion', logo: <NotionLogo className="tool-logo" />, style: orbit('52%', '78%', '6deg', '-0.8s') },
+  { name: 'Lovable', logo: <LovableLogo className="tool-logo" />, style: orbit('16%', '72%', '-8deg', '-4s') },
+]
 
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-pins hero-pins-left" aria-hidden="true">
-        <figure className="polaroid" style={pin('-7deg', '0%', '4%', '46%')}>
-          <img src={quest01} alt="" loading="lazy" />
-        </figure>
-        <div className="sticky-note" style={pin('3deg', '30%', '38%')}>
-          I believe the best work comes from <b>obsessing over the details</b> nobody
-          is supposed to notice.
-        </div>
-        <figure className="polaroid" style={pin('5deg', '52%', '8%', '42%')}>
-          <img src={hobby01} alt="" loading="lazy" />
-        </figure>
-        <span className="sticker" style={pin('14deg', '6%', '58%')}>🎨</span>
-        <span className="sticker" style={pin('-10deg', '82%', '52%')}>🎬</span>
-      </div>
-
       <div className="hero-copy">
         <span className="hero-hello" lang="gu">નમસ્તે</span>
 
@@ -55,15 +55,19 @@ function Hero() {
         </p>
       </div>
 
-      <div className="hero-pins hero-pins-right" aria-hidden="true">
-        <figure className="polaroid" style={pin('6deg', '2%', '18%', '48%')}>
-          <img src={sih01} alt="" loading="lazy" />
+      <div className="hero-portrait">
+        <figure className="hero-photo">
+          <img src={heroPortrait} alt="Khanjna Vasava" />
         </figure>
-        <figure className="polaroid" style={pin('-8deg', '38%', '46%', '44%')}>
-          <img src={hobby02} alt="" loading="lazy" />
-        </figure>
-        <span className="sticker" style={pin('-12deg', '46%', '10%')}>📚</span>
-        <span className="sticker" style={pin('16deg', '78%', '30%')}>💃</span>
+
+        <ul className="hero-tools">
+          {tools.map((tool) => (
+            <li key={tool.name} className="hero-tool" style={tool.style}>
+              {tool.logo}
+              <span>{tool.name}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

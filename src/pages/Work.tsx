@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Nav from '../components/Nav'
+import Dock from '../components/Dock'
 import Book from '../components/Book'
 import { projects } from '../data/projects'
 
@@ -27,7 +27,7 @@ function Work() {
 
   return (
     <>
-      <Nav />
+      <Dock />
       <div id="layout">
         <main id="work-page">
           <div className="page-head">

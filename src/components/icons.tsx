@@ -209,3 +209,43 @@ export function AdobeLogo({ className, letters, bg, fg }: IconProps & { letters:
     </svg>
   )
 }
+
+/* ---------- dock marks ---------- */
+
+export function HomeIcon() {
+  return (
+    <svg {...line} aria-hidden="true">
+      <path d="M3.5 10.2 12 3.5l8.5 6.7V19a1.5 1.5 0 0 1-1.5 1.5h-3.5V15h-7v5.5H5A1.5 1.5 0 0 1 3.5 19Z" />
+    </svg>
+  )
+}
+
+/* The wordmark drawn as strokes, so it sits in the same weight as its
+   neighbours instead of importing a filled brand tile. */
+export function LinkedInIcon() {
+  return (
+    <svg {...line} strokeWidth={2} aria-hidden="true">
+      <path d="M5 9.5v10M5 4.6v.1" />
+      <path d="M11 19.5v-10M11 13.5a4 4 0 0 1 8 0v6" />
+    </svg>
+  )
+}
+
+export function BehanceIcon() {
+  return (
+    <svg {...line} strokeWidth={1.9} aria-hidden="true">
+      <path d="M2.5 5.5h5a3 3 0 0 1 0 6h-5Zm0 6h5.6a3.2 3.2 0 0 1 0 6.4H2.5Z" />
+      <path d="M14 6.2h7" />
+      <path d="M13.5 14.4h8a4 4 0 0 0-8-.6v1.4a3.9 3.9 0 0 0 7.2 2" />
+    </svg>
+  )
+}
+
+export function DocIcon() {
+  return (
+    <svg {...line} aria-hidden="true">
+      <path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8Z" />
+      <path d="M14 3.5V8h4.5M8.8 12.5h6.4M8.8 16h4.4" />
+    </svg>
+  )
+}

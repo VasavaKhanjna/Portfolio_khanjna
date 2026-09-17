@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import Nav from '../components/Nav'
+import Dock from '../components/Dock'
 import Carousel from '../components/Carousel'
 import profilePhoto from '../assets/profile-photo.png'
 import sih01 from '../assets/achievements/sih_01.jpeg'
@@ -95,7 +95,7 @@ const blocks = [
 function About() {
   return (
     <>
-      <Nav />
+      <Dock />
       <div id="layout">
         <main id="about-page">
           {blocks.map((block, index) => (

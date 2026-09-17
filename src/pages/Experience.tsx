@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Nav from '../components/Nav'
+import Dock from '../components/Dock'
 import Skills from '../components/Skills'
 
 const experience = [
@@ -62,7 +62,7 @@ function Experience() {
 
   return (
     <>
-      <Nav />
+      <Dock />
       <div id="layout">
         <main id="experience-page">
           <div className="page-head">
