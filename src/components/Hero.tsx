@@ -48,10 +48,8 @@ function Hero() {
         </p>
 
         <p className="hero-note">
-          Currently at <b>Astar Infotech</b>, Gandhinagar
-          <span className="hero-note-in">designing Greta and PLGOS for Questera AI.</span>
-          Previously I have worked with <b>Green Aadhaar</b> and <b>Techinfinity</b>
-          <span className="hero-note-in">to build products people actually finish using.</span>
+          I&rsquo;ve always been curious about how things work.
+          <span className="hero-note-in">Now I design how they feel.</span>
         </p>
       </div>
 
