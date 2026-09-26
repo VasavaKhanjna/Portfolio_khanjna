@@ -8,8 +8,6 @@ export type Project = {
   slug: string
   label: string
   tone: Tone
-  /** Badge on the book cover. */
-  metric: string
   /** Artwork for the book cover; without it the cover is drawn from `tone`. */
   cover?: string
   type: string
@@ -27,7 +25,6 @@ export const projects: Project[] = [
     label: 'Greta',
     tone: 'sand',
     cover: gretaPoster,
-    metric: '~5K users',
     type: 'AI product',
     surface: 'Web · Mobile',
     year: '2025—',
@@ -41,25 +38,25 @@ export const projects: Project[] = [
     label: 'PLGOS',
     tone: 'ink',
     cover: plgosPoster,
-    metric: 'PLG platform',
     type: 'PLG platform',
     surface: 'Web',
     year: '2024–25',
-    role: 'UI/UX Designer',
+    role: 'Lead Designer',
     description:
       'Designed a product-led growth platform end-to-end: onboarding, in-app guidance, gamification (quizzes, streaks, leaderboards), feedback loops, and pricing — in light and dark themes.',
+    caseStudy: true,
   },
   {
-    slug: 'flows',
-    label: 'Flows',
+    slug: 'mediq',
+    label: 'MediQ',
     tone: 'clay',
     cover: mediqPoster,
-    metric: 'No-code builder',
-    type: 'Workflow builder',
-    surface: 'Web',
-    year: '2024–25',
+    type: 'Case study',
+    surface: 'Mobile',
+    year: '2026',
     role: 'UI/UX Designer',
     description:
-      'Shipped a no-code workflow automation builder for non-technical users, including the project theme system and full auth UX with OTP and Google OAuth.',
+      'A mobile app that turns a lab report PDF into plain-language explanations, color-coded ranges, and a safe next step — so people know how concerned to be before they see a doctor.',
+    caseStudy: true,
   },
 ]

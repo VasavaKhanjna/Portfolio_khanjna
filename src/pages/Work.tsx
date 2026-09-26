@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Dock from '../components/Dock'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import Book from '../components/Book'
 import { projects } from '../data/projects'
 
@@ -27,7 +28,7 @@ function Work() {
 
   return (
     <>
-      <Dock />
+      <Nav />
       <div id="layout">
         <main id="work-page">
           <div className="page-head">
@@ -110,10 +111,7 @@ function Work() {
             })}
           </ul>
 
-          <footer id="footer">
-            <span>© 2026 Khanjna Vasava</span>
-            <a href="mailto:vasavakhanjna22@gmail.com">vasavakhanjna22@gmail.com</a>
-          </footer>
+          <Footer />
         </main>
       </div>
     </>

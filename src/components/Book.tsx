@@ -5,7 +5,6 @@ function Book({ project }: { project: Project }) {
     <div className="book-wrap">
       <div className="book-page" />
       <div className={`book tone-${project.tone} ${project.cover ? 'has-art' : ''}`}>
-        <span className="book-badge">{project.metric}</span>
         {project.cover ? (
           <img className="book-art" src={project.cover} alt={`${project.label} cover`} />
         ) : (

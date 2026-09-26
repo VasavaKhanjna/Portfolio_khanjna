@@ -1,29 +1,40 @@
 import { Link } from 'react-router-dom'
-import Dock from '../components/Dock'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import Book from '../components/Book'
+import ExperienceSection from '../components/ExperienceSection'
+import AboutSection from '../components/AboutSection'
 import { projects } from '../data/projects'
-
-const connectLinks = [
-  { label: 'Email', href: 'mailto:vasavakhanjna22@gmail.com' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/khanjnavasava' },
-  { label: 'Behance', href: 'https://behance.net/vasavakhanjna' },
-]
 
 function Home() {
   return (
     <>
-      <Dock />
+      <Nav />
 
       <div id="layout">
         <main id="content">
           <Hero />
 
+          <section id="intro" className="intro">
+            <p className="intro-hello">Hello.</p>
+            <h2 className="intro-lead">
+              Hi, I&rsquo;m Khanjna — a Product Designer based in Gandhinagar,
+              India. I believe design starts with empathy, not aesthetics. As
+              the founding designer at Greta, I helped take it from zero to
+              5,000+ paying customers while building the design system that
+              keeps product and engineering in sync. I turn ambiguous ideas
+              into thoughtful, shippable experiences through research,
+              interaction design, and design systems — always designing for the
+              person on the other side of the screen.
+            </h2>
+          </section>
+
           <section id="work" className="work-grid">
             {projects.map((project) => (
               <Link
                 className="work-card"
-                to={project.caseStudy ? `/work/${project.slug}` : `/work#${project.slug}`}
+                to={`/work/${project.slug}`}
                 key={project.slug}
               >
                 <Book project={project} />
@@ -37,57 +48,17 @@ function Home() {
                     <span aria-hidden="true">·</span>
                     <span>{project.year}</span>
                   </p>
-                  <p className="work-desc">{project.description}</p>
                 </div>
               </Link>
             ))}
           </section>
 
-          <section id="connect" className="connect-section">
-            <div className="connect-row">
-              <h2>Hello.</h2>
-              <p>
-                I'm Khanjna, a product designer based in Gandhinagar, India.
-                Over the past 2+ years I've taken complex AI-powered products
-                from zero to launch, most recently leading design for Greta
-                at Questera AI.
-              </p>
-            </div>
+          <ExperienceSection />
 
-            <div className="connect-row">
-              <h3>How I can help</h3>
-              <p>
-                I help teams turn ambiguous product ideas into shipped
-                experiences — from <strong>user research and design systems</strong> to{' '}
-                <strong>interaction design and design QA</strong>. I work closely with
-                engineering to <strong>ship fast without losing craft</strong>, across
-                web and mobile.
-              </p>
-            </div>
+          <AboutSection />
 
-            <div className="connect-row connect-row-links">
-              <h3>Let's connect</h3>
-              <div className="connect-links">
-                {connectLinks.map((link) => (
-                  <a
-                    className="connect-link"
-                    href={link.href}
-                    key={link.label}
-                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-                  >
-                    <span>{link.label}</span>
-                    <span className="connect-arrow" aria-hidden="true">↗</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
 
-          <footer id="footer">
-            <span>© 2026 Khanjna Vasava</span>
-            <a href="mailto:vasavakhanjna22@gmail.com">vasavakhanjna22@gmail.com</a>
-          </footer>
+          <Footer />
         </main>
       </div>
     </>

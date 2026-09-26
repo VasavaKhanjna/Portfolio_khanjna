@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import Dock from '../components/Dock'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import gretaHero from '../assets/greta/greta-hero.svg'
 import homeV1 from '../assets/greta/home-tab-v1.svg'
 import homeV2 from '../assets/greta/home-tab-v2.svg'
@@ -8,6 +9,7 @@ import Annotated from '../components/Annotated'
 import ResearchWall from '../components/ResearchWall'
 import comparisonTable from '../assets/greta/comparison-table.svg'
 import type { Panel } from '../components/Annotated'
+import { Section, Shot } from '../components/CaseStudy'
 
 const facts = [
   ['Role', 'Product Designer'],
@@ -118,27 +120,6 @@ function T({ children }: { children: ReactNode }) {
   return <span className="cs-todo">{children}</span>
 }
 
-/** A slot for real product imagery. Swap each one for the actual asset. */
-function Shot({
-  label,
-  brief,
-  tall,
-}: {
-  label: string
-  brief: string
-  tall?: boolean
-}) {
-  return (
-    <figure className={`cs-shot ${tall ? 'is-tall' : ''}`}>
-      <span className="cs-shot-tag">Visual</span>
-      <figcaption>
-        <b>{label}</b>
-        <span>{brief}</span>
-      </figcaption>
-    </figure>
-  )
-}
-
 function Flow({
   title,
   steps,
@@ -163,40 +144,15 @@ function Flow({
   )
 }
 
-function Section({
-  n,
-  title,
-  kicker,
-  children,
-}: {
-  n: string
-  title: string
-  kicker: string
-  children: ReactNode
-}) {
-  return (
-    <section className="cs-section" id={`s${n}`}>
-      <header className="cs-section-head">
-        <span className="cs-num">{n}</span>
-        <div>
-          <h2>{title}</h2>
-          <span className="cs-kicker">{kicker}</span>
-        </div>
-      </header>
-      {children}
-    </section>
-  )
-}
-
 function Greta() {
   return (
     <>
-      <Dock />
+      <Nav />
 
       <main id="case-page">
         <div className="cs-inner">
           <header className="cs-hero">
-            <Link className="cs-back" to="/work">
+            <Link className="cs-back" to="/#work">
               ← Work
             </Link>
             <span className="cs-eyebrow">Product Design · 2025 — 2026</span>
@@ -698,7 +654,7 @@ function Greta() {
           </Section>
 
           <div className="cs-end">
-            <Link className="cs-end-link" to="/work">
+            <Link className="cs-end-link" to="/#work">
               <span>All work</span>
               <span aria-hidden="true">→</span>
             </Link>
@@ -709,10 +665,7 @@ function Greta() {
           </div>
         </div>
 
-        <footer id="footer">
-          <span>© 2026 Khanjna Vasava</span>
-          <a href="mailto:vasavakhanjna22@gmail.com">vasavakhanjna22@gmail.com</a>
-        </footer>
+        <Footer />
       </main>
     </>
   )
