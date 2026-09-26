@@ -940,22 +940,15 @@
 
 .about-frame {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: clamp(32px, 4vw, 64px);
+  gap: 40px;
   padding-inline: var(--gutter);
 
   .page-head {
     padding-inline: 0;
   }
-
-  @media (max-width: 1024px) {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 .about-story {
-  max-width: 44ch;
   margin: 0;
   font-size: 19px;
   line-height: 1.65;
@@ -966,19 +959,11 @@
   }
 }
 
-/* A wall of prints in three rows. Photos in a row share a height and take
-   widths from their shapes, so none is cropped. The wall's width comes from
-   the screen height, so the whole section fits on one screen:
-   rows ≈ 3 × (width − 106px) ÷ 4.2, plus ~180px of frames, captions and gaps. */
+/* A wall of prints in two rows across the full width. Photos in a row share
+   a height and take widths from their shapes, so none is cropped. */
 .about-wall {
-  --fit: calc(100svh - var(--nav-height) - 2 * var(--section-space) - 180px);
   display: grid;
   gap: 16px;
-  width: min(62vw, calc(var(--fit) * 1.4 + 106px));
-
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
 
   figure {
     flex: var(--ratio) 1 0;

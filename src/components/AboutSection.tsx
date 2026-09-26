@@ -20,24 +20,22 @@ type Photo = {
   ratio: number
 }
 
-/* Three rows of four, mixed so each row adds up to about the same width. */
+/* Two rows of six, mixed so both rows add up to about the same width. */
 const rows: Photo[][] = [
   [
     { src: profilePhoto, caption: 'Me', alt: 'Khanjna Vasava', ratio: 1 },
-    { src: quest01, caption: 'Questera', alt: 'At Questera', ratio: 4 / 3 },
+    { src: sih01, caption: 'SIH 2022', alt: 'Smart India Hackathon 2022', ratio: 1.5 },
     { src: hobby01, caption: 'Off hours', alt: 'Outside of work', ratio: 0.531 },
-    { src: sih02, caption: 'SIH 2022', alt: 'Smart India Hackathon team', ratio: 1.334 },
+    { src: quest01, caption: 'Questera', alt: 'At Questera', ratio: 4 / 3 },
+    { src: hobby02, caption: 'Off hours', alt: 'Outside of work', ratio: 0.5625 },
+    { src: collage01, caption: 'LDCE', alt: 'L.D. College of Engineering', ratio: 4 / 3 },
   ],
   [
     { src: collage02, caption: 'Graduation', alt: 'Graduation day', ratio: 0.75 },
-    { src: sih01, caption: 'SIH 2022', alt: 'Smart India Hackathon 2022', ratio: 1.5 },
-    { src: hobby02, caption: 'Off hours', alt: 'Outside of work', ratio: 0.5625 },
     { src: quest02, caption: 'Questera', alt: 'With the Questera team', ratio: 4 / 3 },
-  ],
-  [
-    { src: ssip01, caption: 'SSIP 2022 · 1st', alt: 'Winning the SSIP 2022 hackathon', ratio: 1 },
-    { src: collage01, caption: 'LDCE', alt: 'L.D. College of Engineering', ratio: 4 / 3 },
     { src: hobby04, caption: 'Off hours', alt: 'Outside of work', ratio: 0.5625 },
+    { src: sih02, caption: 'SIH 2022', alt: 'Smart India Hackathon team', ratio: 1.334 },
+    { src: ssip01, caption: 'SSIP 2022 · 1st', alt: 'Winning the SSIP 2022 hackathon', ratio: 1 },
     { src: quest03, caption: 'Questera', alt: 'At a Questera event', ratio: 4 / 3 },
   ],
 ]
@@ -45,7 +43,7 @@ const rows: Photo[][] = [
 function AboutSection() {
   return (
     <section id="about">
-      {/* One screen: the words on the left, the wall on the right. */}
+      {/* The words on top, the wall of photos underneath. */}
       <div className="about-frame">
         <div className="about-text">
           <div className="page-head">
