@@ -415,6 +415,28 @@
     border-radius: inherit;
   }
 
+  /* An elastic band stretched across the cover, overhanging both edges. */
+  .book-band {
+    position: absolute;
+    top: 40%;
+    left: -6px;
+    right: -6px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    height: 12%;
+    border-radius: 4px;
+    background:
+      repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 3px),
+      linear-gradient(to bottom, #1a1a1a, #050505 50%, #151515);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(13px, 1.3vw, 18px);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
   &.tone-sand {
     background: var(--tone-sand);
 
@@ -436,6 +458,14 @@
       color: #fff;
     }
   }
+}
+
+/* A book strapped shut by its band stays closed on hover. */
+.book-wrap.is-closed:hover .book {
+  transform: none;
+}
+.book-wrap.is-closed:hover .book.has-art {
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
 }
 
 /* ---------- intro ---------- */

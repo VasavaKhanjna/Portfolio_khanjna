@@ -2,7 +2,7 @@ import type { Project } from '../data/projects'
 
 function Book({ project }: { project: Project }) {
   return (
-    <div className="book-wrap">
+    <div className={`book-wrap ${project.comingSoon ? 'is-closed' : ''}`}>
       <div className="book-page" />
       <div className={`book tone-${project.tone} ${project.cover ? 'has-art' : ''}`}>
         {project.cover ? (
@@ -10,6 +10,7 @@ function Book({ project }: { project: Project }) {
         ) : (
           <span className="book-title">{project.label}</span>
         )}
+        {project.comingSoon && <span className="book-band">Coming soon</span>}
       </div>
     </div>
   )

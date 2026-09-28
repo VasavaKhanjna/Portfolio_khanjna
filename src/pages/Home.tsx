@@ -23,40 +23,52 @@ function Home() {
               India. I believe design starts with empathy, not aesthetics. As
               the founding designer at Greta, I helped take it from zero to
               5,000+ paying customers while building the design system that
-              keeps product and engineering in sync. I turn ambiguous ideas
-              into thoughtful, shippable experiences through research,
-              interaction design, and design systems — always designing for the
-              person on the other side of the screen.
+              keeps product and engineering in sync. I turn ambiguous ideas into
+              thoughtful, shippable experiences through research, interaction
+              design, and design systems — always designing for the person on
+              the other side of the screen.
             </h2>
           </section>
 
           <section id="work" className="work-grid">
-            {projects.map((project) => (
-              <Link
-                className="work-card"
-                to={`/work/${project.slug}`}
-                key={project.slug}
-              >
-                <Book project={project} />
+            {projects.map((project) => {
+              const card = (
+                <>
+                  <Book project={project} />
 
-                <div className="work-caption">
-                  <h3 className="work-name">{project.label}</h3>
-                  <p className="work-meta">
-                    <span>{project.type}</span>
-                    <span aria-hidden="true">·</span>
-                    <span>{project.surface}</span>
-                    <span aria-hidden="true">·</span>
-                    <span>{project.year}</span>
-                  </p>
+                  <div className="work-caption">
+                    <h3 className="work-name">{project.label}</h3>
+                    <p className="work-meta">
+                      <span>{project.type}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{project.surface}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{project.year}</span>
+                    </p>
+                  </div>
+                </>
+              )
+
+              // A project that isn't ready yet shows its cover but goes nowhere.
+              return project.comingSoon ? (
+                <div className="work-card" key={project.slug}>
+                  {card}
                 </div>
-              </Link>
-            ))}
+              ) : (
+                <Link
+                  className="work-card"
+                  to={`/work/${project.slug}`}
+                  key={project.slug}
+                >
+                  {card}
+                </Link>
+              )
+            })}
           </section>
 
           <ExperienceSection />
 
           <AboutSection />
-
 
           <Footer />
         </main>

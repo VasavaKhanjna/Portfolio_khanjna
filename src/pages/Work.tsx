@@ -57,6 +57,19 @@ function Work() {
                 </span>
               )
 
+              // A project that isn't ready yet is listed but goes nowhere.
+              if (project.comingSoon) {
+                return (
+                  <li className="ledger-row" id={project.slug} key={project.slug}>
+                    <div className="ledger-header">
+                      <span className="ledger-name">{project.label}</span>
+                      {meta}
+                      <span className="ledger-mark" aria-hidden="true" />
+                    </div>
+                  </li>
+                )
+              }
+
               // A project with a case study opens its own page instead of
               // unfolding in place.
               if (project.caseStudy) {

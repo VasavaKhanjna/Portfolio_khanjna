@@ -17,6 +17,8 @@ export type Project = {
   description: string
   /** Set when the project has its own case-study page at /work/<slug>. */
   caseStudy?: boolean
+  /** Wraps the cover in a "Coming soon" band. */
+  comingSoon?: boolean
 }
 
 export const projects: Project[] = [
@@ -32,6 +34,7 @@ export const projects: Project[] = [
     description:
       'Designed an AI product end-to-end across web, mobile, and growth, from zero to launch — now ~5,000 paid customers and ~$250K revenue. Led the full redesign of app.greta.sh and built the design system from scratch.',
     caseStudy: true,
+    comingSoon: true,
   },
   {
     slug: 'plgos',
