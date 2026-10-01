@@ -14,7 +14,7 @@ function Hero() {
         src={heroArt}
         alt=""
         width={1440}
-        height={1084}
+        height={900}
         fetchPriority="high"
       />
     </section>

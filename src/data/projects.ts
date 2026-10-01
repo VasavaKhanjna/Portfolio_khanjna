@@ -1,6 +1,7 @@
 import gretaPoster from '../assets/projects/greta-poster.svg'
 import mediqPoster from '../assets/projects/mediq-poster.svg'
 import plgosPoster from '../assets/projects/plgos-poster.svg'
+import questhivePoster from '../assets/projects/questhive-poster.svg'
 
 export type Tone = 'sand' | 'ink' | 'clay'
 
@@ -61,5 +62,17 @@ export const projects: Project[] = [
     description:
       'A mobile app that turns a lab report PDF into plain-language explanations, color-coded ranges, and a safe next step — so people know how concerned to be before they see a doctor.',
     caseStudy: true,
+  },
+  {
+    slug: 'questhive',
+    label: 'Questhive',
+    tone: 'ink',
+    cover: questhivePoster,
+    type: 'Task management tool',
+    surface: 'Web',
+    year: '2024–25',
+    role: 'Product Lead',
+    description: '',
+    comingSoon: true,
   },
 ]

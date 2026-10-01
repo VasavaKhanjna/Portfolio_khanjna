@@ -269,16 +269,15 @@
 
 /* ---------- home ---------- */
 
-/* Three covers to a row across the full content width; two on tablets, one on phones. */
+/* Two covers to a row, so four projects sit as a 2×2; one on phones. */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 56px clamp(24px, 3vw, 48px);
   width: 100%;
   padding: var(--section-space) var(--gutter);
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 48px 32px;
   }
 
@@ -3205,7 +3204,7 @@
 
 /* The art's white top and peach bottom carry on behind it, out to the screen
    edges and through the padding. Its own top is already mostly white space, so
-   the padding sits at the sides and below. The split is 519 of the art's 1084px. */
+   the padding sits at the sides and below. The split is 519 of the art's 900px. */
 .hero {
   --pad-top: 0px;
   --pad-bottom: var(--section-space);
@@ -3215,12 +3214,12 @@
   padding: var(--pad-top) var(--gutter) var(--pad-bottom);
 
   &::before {
-    --split: calc(var(--pad-top) + (100% - var(--pad-top) - var(--pad-bottom)) * 0.4788);
+    --split: calc(var(--pad-top) + (100% - var(--pad-top) - var(--pad-bottom)) * 0.5767);
     content: '';
     position: absolute;
     z-index: -1;
     inset: 0 calc(50% - 50vw);
-    background: linear-gradient(#fff var(--split), #f9e3c9 var(--split));
+    background: linear-gradient(#fff var(--split), #fed6a6 var(--split));
   }
 }
 

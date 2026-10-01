@@ -67,7 +67,11 @@ function Nav() {
             </li>
           ))}
           <li>
-            <a href="/resume.pdf" target="_blank" rel="noreferrer">
+            <a
+              href="https://drive.google.com/file/d/1cc4uB1845qHfNxyvZpxee5yz4NbZrkXN/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
               Résumé
             </a>
           </li>
